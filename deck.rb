@@ -7,7 +7,7 @@ class Deck
   }
 
   def initialize
-    make_deck
+    make
   end
 
   def make
@@ -23,8 +23,8 @@ class Deck
     raise 'The deck is over' if @deck.size.zero?
     @deck.shuffle!
     card = @deck[0]
-    @deck.delete_at[0]
-    card
+    @deck.delete_at(0)
+    return card
   end
 
 end

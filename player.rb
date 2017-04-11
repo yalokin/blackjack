@@ -1,13 +1,17 @@
+require_relative 'account'
+require_relative 'deck'
+
 class Player
-  @cards = []
 
   def initialize(name)
     @name = name
-    @account = new.Account
+    @cards = []
+    @account = Account.new(self, 100)
     raise 'Name can not be empty' if name.empty?
   end
 
-  def take_card
+  def take_card(card)
+    @cards << card
   end
 
   def count_scores
