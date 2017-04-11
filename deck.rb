@@ -10,7 +10,7 @@ class Deck
     make_deck
   end
 
-  def make_deck
+  def make
     @deck = []
     SUITS.each do |suit|
       CARDS.each do |key, value|
@@ -18,7 +18,13 @@ class Deck
       end
     end
   end
-  #выдать карту
-    #перемешать колоду
-    #удалить карту из колоды
+
+  def give_card
+    raise 'The deck is over' if @deck.size.zero?
+    @deck.shuffle!
+    card = @deck[0]
+    @deck.delete_at[0]
+    card
+  end
+
 end
