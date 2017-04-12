@@ -2,6 +2,7 @@ require_relative 'account'
 require_relative 'deck'
 
 class Player
+  attr_reader :account
 
   def initialize(name)
     @name = name

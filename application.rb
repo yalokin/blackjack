@@ -9,6 +9,7 @@ class Application
     @deck = Deck.new
     create_players(player_name)
     give_cards
+    @bank = Account.new(:bank, 0)
   end
 
   def player_name
@@ -27,9 +28,32 @@ class Application
       @dealer.take_card(@deck.give_card)
     end
   end
+
+  def place_bet(sum)
+    @player.account.transfer(@bank, sum)
+    @dealer.account.transfer(@bank, sum)
+  end
+
+  def game
+    place_bet(10)
+    # проверка на 3 карты
+    #   ход игрока
+    #     подсчет очков
+    #     пропустить
+    #     взать карту
+    #     открыть
+    #   ход дилера
+    #     пропустить
+    #     взять карту
+    # подсчет очков
+    # результат
+    # перевод банка
+    # играть?
+  end
   
 end
 
 app = Application.new
+app.place_bet(10)
 
 p app
