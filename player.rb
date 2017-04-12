@@ -18,8 +18,14 @@ class Player
   def count_scores
     #туз 1 или 11
     sum = 0
+    ace = 0
     @cards.each do |card|
+      sum += card[1]
     end
+  end
+
+  def count_cards
+    @cards.size
   end
 
 end

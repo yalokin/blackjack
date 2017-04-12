@@ -13,8 +13,8 @@ class Deck
   def make
     @deck = []
     SUITS.each do |suit|
-      RANKS.each do |key, value|
-        @deck << [key + suit, value]
+      RANKS.each do |rank, score|
+        @deck << [rank + suit, score]
       end
     end
   end

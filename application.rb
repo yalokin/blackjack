@@ -19,7 +19,7 @@ class Application
 
   def create_players(player_name)
     @player = Player.new(player_name)
-    @dealer = Player.new('Dialer')
+    @dealer = Player.new('Dealer')
   end
 
   def give_cards
@@ -34,9 +34,14 @@ class Application
     @dealer.account.transfer(@bank, sum)
   end
 
+  def player_action
+
+  end
+
   def game
     place_bet(10)
     # проверка на 3 карты
+    unless @player.count_cards = 3 || @dealer.count_cards = 3
     #   ход игрока
     #     подсчет очков
     #     пропустить
@@ -49,6 +54,7 @@ class Application
     # результат
     # перевод банка
     # играть?
+    end
   end
   
 end
