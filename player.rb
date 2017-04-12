@@ -17,11 +17,14 @@ class Player
 
   def count_scores
     #туз 1 или 11
-    sum = 0
-    ace = 0
+    scores = 0
+    ace = false
     @cards.each do |card|
-      sum += card[1]
+      scores += card[1]
+      ace = true if card[1] == 11
     end
+    #todo добавить расчет при  наличии туза
+    scores
   end
 
   def count_cards

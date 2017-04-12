@@ -41,7 +41,7 @@ class Application
   def game
     place_bet(10)
     # проверка на 3 карты
-    unless @player.count_cards = 3 || @dealer.count_cards = 3
+    unless @player.count_cards == 3 || @dealer.count_cards == 3
     #   ход игрока
     #     подсчет очков
     #     пропустить
