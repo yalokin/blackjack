@@ -31,4 +31,13 @@ class Player
     @cards.size
   end
 
+  def print_cards
+    print "Your cards:"
+    @cards.each { |card| print " #{card[0]}" }
+    print "\n"
+  end
+
+  def print_scores
+    puts "Your scores: #{count_scores}"
+  end
 end

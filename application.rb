@@ -35,7 +35,24 @@ class Application
   end
 
   def player_action
+    @player.print_cards
+    @player.print_scores
+  end
 
+  def player_choice
+    puts 'What is your action? '
+    puts '|| 1 - Skip || 2 - Take a card || 3 - Open a cards ||'
+    choice = gets.chomp.to_i
+
+    case choice
+    when 1
+      skip
+    when 2
+      @player.take_card
+    when 3
+      open_cards
+    else puts "Make the right choice!"
+    end
   end
 
   def game
@@ -43,6 +60,7 @@ class Application
     # проверка на 3 карты
     unless @player.count_cards == 3 || @dealer.count_cards == 3
     #   ход игрока
+      player_action
     #     подсчет очков
     #     показать карты и очки игрока
     #     показать количество карт дилера
@@ -64,6 +82,6 @@ class Application
 end
 
 app = Application.new
-app.place_bet(10)
 
-p app
+#p app
+app.game
