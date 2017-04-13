@@ -1,4 +1,5 @@
 class Account
+  attr_reader :sum
 
   def initialize(owner, sum)
     @owner = owner

@@ -47,4 +47,8 @@ class Player
     choice = gets.chomp.to_i
     #Todo добавить проверку ввода
   end
+
+  def print_money
+    puts "You have $#{@account.sum}"
+  end
 end

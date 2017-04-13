@@ -38,6 +38,7 @@ class Application
   def player_action
     @player.print_cards
     @player.print_scores
+    @player.print_money
     @dealer.print_cards
   end
 
