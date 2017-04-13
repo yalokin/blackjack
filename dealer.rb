@@ -1,7 +1,9 @@
-class Dealer < Player
-  def print_cards
+class Dealer < Member
+  
+  def show_cards
     print "Cards of dealer:"
-    count_cards.times { print ' [ * ]'}
+    count_cards.times { print ' [ * ]' }
     print "\n"
   end
+  
 end
