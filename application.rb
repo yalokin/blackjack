@@ -1,4 +1,5 @@
 require_relative 'player'
+require_relative 'dealer'
 require_relative 'deck'
 
 class Application
@@ -19,7 +20,7 @@ class Application
 
   def create_players(player_name)
     @player = Player.new(player_name)
-    @dealer = Player.new('Dealer')
+    @dealer = Dealer.new('Dealer')
   end
 
   def give_cards
