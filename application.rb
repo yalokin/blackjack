@@ -38,20 +38,18 @@ class Application
   def player_action
     @player.print_cards
     @player.print_scores
+    @dealer.print_cards
   end
 
   def player_choice
-    puts 'What is your action? '
-    puts '|| 1 - Skip || 2 - Take a card || 3 - Open a cards ||'
-    choice = gets.chomp.to_i
-
+    choice = @player.action_choice
     case choice
     when 1
-      skip
+      puts 'skip'
     when 2
       @player.take_card
     when 3
-      open_cards
+      puts 'open_cards'
     else puts "Make the right choice!"
     end
   end
@@ -62,9 +60,7 @@ class Application
     unless @player.count_cards == 3 || @dealer.count_cards == 3
     #   ход игрока
       player_action
-    #     подсчет очков
-    #     показать карты и очки игрока
-    #     показать количество карт дилера
+      player_choice
     #     дать выбор игроку
     #       пропустить
     #       взять карту
