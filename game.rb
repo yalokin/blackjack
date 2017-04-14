@@ -31,7 +31,7 @@ class Game
     @player.show_cards
     @player.show_scores
     @player.show_money
-    @dealer.show_cards
+    @dealer.show_back_cards
     player_choice
   end
 
@@ -43,7 +43,7 @@ class Game
     when 2
       @player.take_card(@deck.give_card)
     when 3
-      puts 'open_cards' #результат и приглашение поиграть снова
+      open_cards #результат и приглашение поиграть снова
     else
       puts "Make the right choice!"
       player_choice
@@ -52,6 +52,22 @@ class Game
 
   def dealer_action
     @dealer.action
+  end
+
+  def open_cards
+    puts "Player:"
+    @player.show_cards
+    @player.show_scores
+    puts "Dealer:"
+    @dealer.show_cards
+    @dealer.show_scores
+    #результат
+    #списать деньги
+  end
+
+  def result
+    #если очки равны ничья вернуть ставки
+    #у кого-то больше
   end
 
   def party

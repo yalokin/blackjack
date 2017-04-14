@@ -32,4 +32,17 @@ class Member
     @cards.size
   end
 
+  def show_cards
+    print "Cards:"
+    @cards.each { |card| print " [ #{card[0]} ]" }
+    print "\n"
+  end
+
+  def show_scores
+    puts "Scores: #{count_scores}"
+  end
+
+  def show_money
+    puts "You have $#{@account.sum}"
+  end  
 end
