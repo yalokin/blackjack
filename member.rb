@@ -4,8 +4,9 @@ require_relative 'deck'
 class Member
   attr_reader :account, :name
 
-  def initialize(name)
+  def initialize(name, game)
     @name = name
+    @game = game
     @cards = []
     @account = Account.new(self, 0)
     raise 'Name can not be empty' if name.empty?
