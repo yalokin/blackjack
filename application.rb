@@ -5,8 +5,7 @@ require_relative 'interface'
 require_relative 'game'
 
 class Application
-
-  attr_reader :player, :dealer, :deck, :game
+  attr_reader :game
 
   def initialize
     @menu = Interface.new
@@ -17,4 +16,5 @@ class Application
 end
 
 app = Application.new
-app.game.game
+app.game.start
+app.game.party

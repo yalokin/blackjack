@@ -31,7 +31,7 @@ class Game
     @player.show_scores
     @player.show_money
     @dealer.show_cards
-  end 
+  end
 
   def player_choice
     choice = @player.action_choice
@@ -39,17 +39,19 @@ class Game
     when 1
       puts 'skip'
     when 2
-      @player.take_card
+      @player.take_card(@deck.give_card)
     when 3
       puts 'open_cards'
-    else puts "Make the right choice!"
+    else
+      puts "Make the right choice!"
+      player_choice
     end
   end
 
-  def game
-    #place_bet(10)
+  def party
+    place_bet(10)
     # проверка на 3 карты
- #   unless @player.count_cards == 3 || @dealer.count_cards == 3
+    unless @player.count_cards == 3 || @dealer.count_cards == 3
     #   ход игрока
       player_action
       player_choice
@@ -64,8 +66,16 @@ class Game
     # результат
     # перевод банка
     # играть?
-   # end
-    #открыть карты
-  end   
+    end
+    # открыть карты
+  end
 
+  def start
+    puts "Hello #{@player.name}! Now we will play blackjack"
+
+    @player.account.init_sum(100)
+    @dealer.account.init_sum(100)
+
+    party
+  end
 end
