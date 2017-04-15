@@ -1,8 +1,11 @@
 require_relative 'player'
 require_relative 'dealer'
 require_relative 'deck'
+require_relative 'result'
 
 class Game
+  include Result
+
   attr_reader :deck
 
   def initialize
@@ -43,7 +46,7 @@ class Game
     when 2
       @player.take_card(@deck.give_card)
     when 3
-      open_cards #результат и приглашение поиграть снова
+      open_cards # результат и приглашение поиграть снова
     else
       puts "Make the right choice!"
       player_choice
@@ -61,13 +64,20 @@ class Game
     puts "Dealer:"
     @dealer.show_cards
     @dealer.show_scores
-    #результат
-    #списать деньги
+    # результат
+    # списать деньги
+  end
+
+  def draw
+    
   end
 
   def result
-    #если очки равны ничья вернуть ставки
-    #у кого-то больше
+    draw if @dealer.count_scores == @player.count_scores || (@dealer.count_scores && @player.count_scores) > 21
+    diff_dealer = 21 - @dealer.count_scores
+    diff_player = 21 - @player.count_scores
+    dealer_win if @player.count_scores > 21 || diff_dealer < diff_player
+    player_win if @dealer.count_scores > 21 || diff_player < diff_dealer
   end
 
   def party
