@@ -43,7 +43,7 @@ class Member
     ace = false
     @cards.each do |card|
       scores += card[1]
-      ace = true if card[1] == 11
+      ace = true if card[1] == 1
     end
     if scores + 10 < 22
       scores + 10
@@ -51,5 +51,5 @@ class Member
       scores
     end
   end
-  
+
 end
