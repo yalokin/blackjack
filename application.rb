@@ -17,4 +17,3 @@ end
 
 app = Application.new
 app.game.start
-app.game.party

@@ -44,5 +44,5 @@ class Member
 
   def show_money
     puts "You have $#{@account.sum}"
-  end  
+  end
 end

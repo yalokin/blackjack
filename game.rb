@@ -42,7 +42,7 @@ class Game
     choice = @player.action_choice
     case choice
     when 1
-      dealer_action
+      return
     when 2
       @player.take_card(@deck.give_card)
     when 3
@@ -53,10 +53,6 @@ class Game
     end
   end
 
-  def dealer_action
-    @dealer.action
-  end
-
   def open_cards
     puts "Player:"
     @player.show_cards
@@ -64,34 +60,21 @@ class Game
     puts "Dealer:"
     @dealer.show_cards
     @dealer.show_scores
-    # результат
-    # списать деньги
-  end
-
-  def draw
-    
-  end
-
-  def result
-    draw if @dealer.count_scores == @player.count_scores || (@dealer.count_scores && @player.count_scores) > 21
-    diff_dealer = 21 - @dealer.count_scores
-    diff_player = 21 - @player.count_scores
-    dealer_win if @player.count_scores > 21 || diff_dealer < diff_player
-    player_win if @dealer.count_scores > 21 || diff_player < diff_dealer
+    result
   end
 
   def party
     place_bet(10)
-    # проверка на 3 карты
-    unless (@player.count_cards && @dealer.count_cards) == 3
+
+    until @player.count_cards == 3 && @dealer.count_cards == 3
       player_action
-      dealer_action
-    # подсчет очков
-    # результат
-    # перевод банка
-    # играть?
+      @dealer.action
     end
     # открыть карты
+    open_cards
+    # результат
+    # списать деньги
+    # играть?
   end
 
   def start

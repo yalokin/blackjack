@@ -16,12 +16,6 @@ class Account
     @sum += sum
   end
 
-  # def reset
-  #   @sum = 0
-  # end
-
-  # alias add_money take_money
-
   def init_sum(sum)
     @sum = sum
   end
