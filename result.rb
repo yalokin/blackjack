@@ -1,12 +1,5 @@
 module Result
 
-  # def result
-  #   draw if @dealer.count_scores == @player.count_scores || @dealer.count_scores > 21 && @player.count_scores > 21
-  #   dealer_win if @player.count_scores > 21 || diff_scores(@dealer) < diff_scores(@player)
-  #   dealer_win if 
-  #   player_win if @dealer.count_scores > 21 || diff_scores(@player) < diff_scores(@dealer)
-  # end
-
   def result
     if @dealer.count_scores == @player.count_scores || @dealer.count_scores > 21 && @player.count_scores > 21
       draw
@@ -23,14 +16,22 @@ module Result
 
   def draw
     puts "Draw!"
+    sum = @bank.sum / 2
+    @bank.transfer(@dealer.account, sum)
+    @bank.transfer(@player.account, sum)
+    puts "The dealer and the player transferred to #{sum} dollars"
   end
 
   def dealer_win
     puts "Dealer win!"
+    puts "The dealer was transferred #{@bank.sum} dollars"
+    @bank.transfer(@dealer.account, @bank.sum)
   end
 
   def player_win
-    puts "player win!"
+    puts "Player win!"
+    puts "The player was transferred #{@bank.sum} dollars"
+    @bank.transfer(@player.account, @bank.sum)
   end
 
   def diff_scores(member)

@@ -11,7 +11,6 @@ class Application
     @menu = Interface.new
     @game = Game.new
     @game.create_players(@menu.player_name)
-    @game.give_cards
   end
 end
 

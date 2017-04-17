@@ -17,7 +17,6 @@ class Member
   end
 
   def count_scores
-    #туз 1 или 11
     scores = 0
     ace = false
     @cards.each do |card|

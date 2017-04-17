@@ -9,7 +9,6 @@ class Game
   attr_reader :deck
 
   def initialize
-    @deck = Deck.new
     @bank = Account.new(:bank, 0)
   end
 
@@ -46,7 +45,7 @@ class Game
     when 2
       @player.take_card(@deck.give_card)
     when 3
-      open_cards # результат и приглашение поиграть снова
+      open_cards
     else
       puts "Make the right choice!"
       player_choice
@@ -61,20 +60,38 @@ class Game
     @dealer.show_cards
     @dealer.show_scores
     result
+    @end_party = true
+    play_again
+  end
+
+  def play_again
+    puts "Will we play again? Yes, or no?"
+    choice = gets.strip.upcase
+    if choice == 'YES'
+      start
+    elsif choice == 'NO'
+      exit
+    else
+      puts 'Make the right choice!'
+      play_again
+    end
+  end
+
+  def new_party
+    @end_party = false
+    @deck = Deck.new
+    give_cards
+    place_bet(10)
   end
 
   def party
-    place_bet(10)
-
+    new_party
     until @player.count_cards == 3 && @dealer.count_cards == 3
-      player_action
-      @dealer.action
+      player_action unless @end_party
+      @dealer.action unless @end_party
     end
-    # открыть карты
-    open_cards
-    # результат
-    # списать деньги
-    # играть?
+
+    open_cards unless @end_party
   end
 
   def start
