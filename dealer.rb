@@ -14,4 +14,5 @@ class Dealer < Member
       puts "Dealer took the card"
     end
   end
+
 end

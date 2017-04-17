@@ -1,5 +1,7 @@
 module Result
 
+  private
+
   def result
     if @dealer.count_scores == @player.count_scores || @dealer.count_scores > 21 && @player.count_scores > 21
       draw

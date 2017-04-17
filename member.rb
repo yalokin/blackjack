@@ -16,15 +16,8 @@ class Member
     @cards << card
   end
 
-  def count_scores
-    scores = 0
-    ace = false
-    @cards.each do |card|
-      scores += card[1]
-      ace = true if card[1] == 11
-    end
-    #todo добавить расчет при  наличии туза
-    scores
+  def reset_cards
+    @cards.clear
   end
 
   def count_cards
@@ -44,4 +37,19 @@ class Member
   def show_money
     puts "You have $#{@account.sum}"
   end
+
+  def count_scores
+    scores = 0
+    ace = false
+    @cards.each do |card|
+      scores += card[1]
+      ace = true if card[1] == 11
+    end
+    if scores + 10 < 22
+      scores + 10
+    else
+      scores
+    end
+  end
+  
 end

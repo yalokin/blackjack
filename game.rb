@@ -12,10 +12,21 @@ class Game
     @bank = Account.new(:bank, 0)
   end
 
+  def start
+    puts "Hello #{@player.name}! Now we will play blackjack"
+
+    @player.account.init_sum(100)
+    @dealer.account.init_sum(100)
+
+    party
+  end
+
   def create_players(player_name)
     @player = Player.new(player_name, self)
     @dealer = Dealer.new('Dealer', self)
   end
+
+  private
 
   def give_cards
     2.times do
@@ -68,7 +79,7 @@ class Game
     puts "Will we play again? Yes, or no?"
     choice = gets.strip.upcase
     if choice == 'YES'
-      start
+      party
     elsif choice == 'NO'
       exit
     else
@@ -80,6 +91,8 @@ class Game
   def new_party
     @end_party = false
     @deck = Deck.new
+    @player.reset_cards
+    @dealer.reset_cards
     give_cards
     place_bet(10)
   end
@@ -94,12 +107,4 @@ class Game
     open_cards unless @end_party
   end
 
-  def start
-    puts "Hello #{@player.name}! Now we will play blackjack"
-
-    @player.account.init_sum(100)
-    @dealer.account.init_sum(100)
-
-    party
-  end
 end
