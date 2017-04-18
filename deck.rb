@@ -12,10 +12,7 @@ class Deck
 
   def give_card
     raise 'The deck is over' if @deck.size.zero?
-    @deck.shuffle!
-    card = @deck[0]
-    @deck.delete_at(0)
-    card
+    @deck.pop
   end
 
   private
@@ -27,6 +24,7 @@ class Deck
         @deck << [rank + suit, score]
       end
     end
-  end  
+    @deck.shuffle!
+  end
 
 end

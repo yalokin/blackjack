@@ -15,8 +15,8 @@ class Game
   def start
     puts "Hello #{@player.name}! Now we will play blackjack"
 
-    @player.account.init_sum(100)
-    @dealer.account.init_sum(100)
+    @player.account.sum = 100
+    @dealer.account.sum = 100
 
     party
   end

@@ -1,5 +1,5 @@
 class Account
-  attr_reader :sum
+  attr_accessor :sum
 
   def initialize(owner, sum)
     @owner = owner
@@ -16,7 +16,4 @@ class Account
     @sum += sum
   end
 
-  def init_sum(sum)
-    @sum = sum
-  end
 end
